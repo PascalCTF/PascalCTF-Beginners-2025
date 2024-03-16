@@ -1,0 +1,7 @@
+{
+    "name": "MindBlowing",
+    "category": "crypto",
+    "points": -1,
+    "description": "My friend Marco recently dived into studying bitwise operators, and now he's convinced he's invented pseudorandom numbers!\nCould you help me figure out his secrets?",
+    "flag": "pascalCTF{m4by3_1_sh0uld_ch3ck_th3_t0t4l_numb3r_0f_ONES}"
+}

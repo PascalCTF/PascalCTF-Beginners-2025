@@ -1,0 +1,10 @@
+services:
+  challenge:
+    build: .
+    ports:
+      - "127.0.0.1:5000:5000"
+    restart: unless-stopped
+    image: reverse3
+    container_name: Reverse3
+    environment:
+      - FLAG=pascalCTF{M3t4l_G34r_15_k1Nd4_G04t3d}

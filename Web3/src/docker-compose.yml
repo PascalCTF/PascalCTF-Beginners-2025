@@ -1,0 +1,26 @@
+name: web3
+
+services:
+  db:
+    image: postgres
+    environment:
+      - "POSTGRES_USER=${DB_USER}"
+      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+    healthcheck:
+      test: pg_isready -U $$POSTGRES_USER
+      interval: 10s
+      timeout: 10s
+      retries: 5
+  app:
+    build: .
+    links:
+      - "db:${DB_HOSTNAME}"
+    ports:
+      - "127.0.0.1:${APP_PORT}:${APP_PORT}"
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+    image: web3
+    container_name: Web3

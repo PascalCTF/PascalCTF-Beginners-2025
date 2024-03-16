@@ -1,0 +1,7 @@
+{
+    "name": "Static Fl@g",
+    "category": "web",
+    "points": -1,
+    "description": "A friend of mine created a nice frontend, he said we didn't need a backend to check the flag...",
+    "flag": "pascalCTF{S0_y0u_c4n_US3_1nspect_3l3m3nt_t0_ch34t_huh?}"
+}

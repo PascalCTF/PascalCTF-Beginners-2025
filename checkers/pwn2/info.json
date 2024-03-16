@@ -1,0 +1,7 @@
+{
+    "name": "Unpwnable shop",
+    "category": "pwn",
+    "points": -1,
+    "description": "You can try to pwn us, but my cousin already tried it and he says it's impossible!",
+    "flag": "pascalCTF{N0O0o0o@O0_Hòw_D1D_Y0U_D0_17}"
+}

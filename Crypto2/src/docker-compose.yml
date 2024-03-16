@@ -1,0 +1,12 @@
+name: crypto2
+
+services:
+  challenge:
+    build: .
+    ports:
+      - "420:420"
+    environment:
+      - "FLAG=pascalCTF{m4by3_1_sh0uld_ch3ck_th3_t0t4l_numb3r_0f_ONES}"
+    restart: unless-stopped
+    image: crypto2
+    container_name: Crypto2

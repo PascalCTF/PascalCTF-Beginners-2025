@@ -1,0 +1,25 @@
+services:
+  dns-attacker:
+    restart: always
+    image: strm/dnsmasq
+    container_name: dns-attacker
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf
+    cap_add:
+      - NET_ADMIN
+    networks:
+      - challenge
+
+  victim:
+    build: .
+    depends_on:
+      - dns-attacker
+    networks:
+      - challenge
+    environment:
+      - DOCKER=dns-attacker
+      - DOMAIN=attacker.com
+    
+networks:
+  challenge:
+    driver: bridge

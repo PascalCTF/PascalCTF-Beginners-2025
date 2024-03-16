@@ -1,0 +1,7 @@
+{
+    "name": "Biscotto",
+    "category": "web",
+    "points": -1,
+    "description": "Elia accidentally locked himself out of his admin panel can you help him to get his access back?",
+    "flag": "pascalCTF{d0n7_f0rg3t_th3_ch0col4t3}"
+}

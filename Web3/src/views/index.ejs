@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style.css" rel="stylesheet">
+        <title>EURO 2024</title>
+    </head>
+
+    <body class="flex flex-col min-h-svh">
+        <header>
+            <div class="p-4 bg-slate-700">
+                <nav>
+                    <div class="flex items-center justify-between">
+                        <span class="uppercase font-mono text-lg font-bold text-yellow-300">EURO 2024</span>
+                        <i class="font-semibold text-center font-mono text-gray-500 text-sm">Choose a group to see the rankings and stats</i>
+                        <div class="relative">
+                                <select name="group" onchange="updateGroups(this)"
+                                    class="bg-slate-500 text-white text-md uppercase rounded-md pl-2 pr-8 border hover:cursor-pointer border-slate-400 focus:outline-none appearance-none">
+                                    <option>Group </option>
+                                    <% for (const group of groups) { %>
+                                        <option value="<%= group %>">Group <%= group %></option>
+                                    <% } %>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="py-6 flex-grow" style="background: url('https://cdn-wp.thesportsrush.com/2023/12/272d0d5a-untitled-design-88.jpg?format=auto&w=3840&q=75') center no-repeat; background-size: 100% 100%;">
+            <div class="container mx-auto px-4">
+                <div class="bg-white shadow-lg  shadow-slate-300 rounded-md px-4 pt-3 pb-5 mx-auto max-w-5xl overflow-hidden">
+                    <div class="overflow-auto">
+                        <table class="min-w-full table bg-white border border-gray-400 rounded-lg text-center">
+                            <thead class="bg-gray-300">
+                                <tr class="border-b border-gray-400 text-gray-500">
+                                    <th class="py-2 px-4 border-r border-gray-400 ">Ranking</th>
+                                    <th class="py-2 px-4 border-r border-gray-400 text-gray-500">Team</th>
+                                    <th class="py-2 px-4 border-r border-gray-400 text-gray-500">Points</th>
+                                    <th class="py-2 px-4 border-r border-gray-400 text-gray-500">Wins</th>
+                                    <th class="py-2 px-4 border-r border-gray-400 text-gray-500">Draws</th>
+                                    <th class="py-2 px-4 border-r border-gray-400 text-gray-500">Losses</th>
+                                </tr>
+                            </thead>
+                            <tbody id="group-stats-body">
+                                <!-- Rows will be inserted dynamically here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        
+        <script>
+            let updateGroups = async (obj) => {
+                try {
+                    let response = await fetch('/api/group-stats', {
+                        method: 'POST',
+                        body: `group=${obj.value}`,
+                        headers: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                        }
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    let data = (await response.json())['data'];
+
+                    const tableBody = document.getElementById('group-stats-body');
+                    tableBody.innerHTML = '';
+
+                    data.forEach((row, index) => {
+                        const rowElement = document.createElement('tr');
+
+                        rowElement.innerHTML = `
+                            <td class="py-2 px-4 border-r border-gray-400">${index + 1}</td>
+                            <td class="py-2 px-4 border-r border-gray-400">${row.team_name}</td>
+                            <td class="py-2 px-4 border-r border-gray-400">${row.points}</td>
+                            <td class="py-2 px-4 border-r border-gray-400">${row.wins}</td>
+                            <td class="py-2 px-4 border-r border-gray-400">${row.draws}</td>
+                            <td class="py-2 px-4 border-r border-gray-400">${row.losses}</td>
+                        `;
+                        rowElement.classList.add('border-b', 'border-gray-400', 'text-gray-700');
+                        tableBody.appendChild(rowElement);
+                    });
+
+                } catch (error) {
+                    console.error('Error fetching group data:', error);
+                }
+            }
+        </script>
+    </body>
+</html>

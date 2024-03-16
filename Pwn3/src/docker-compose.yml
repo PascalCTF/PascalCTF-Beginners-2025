@@ -1,0 +1,8 @@
+services:
+  challenge:
+    build: .
+    ports:
+      - "1339:1339/tcp"
+    restart: unless-stopped
+    image: pwn3
+    container_name: Pwn3

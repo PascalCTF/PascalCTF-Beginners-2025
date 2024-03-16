@@ -1,0 +1,11 @@
+name: pwn2
+
+services:
+  challenge:
+    read_only: true
+    build: .
+    ports:
+      - "1338:1338/tcp"
+    restart: unless-stopped
+    image: pwn2
+    container_name: Pwn2

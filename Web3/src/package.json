@@ -1,0 +1,37 @@
+{
+  "name": "web3",
+  "version": "1.0.0",
+  "description": "Third beginner web challenge",
+  "main": "server.js",
+  "scripts": {
+    "build-css": "npx tailwindcss -o src/public/style.css",
+    "watch-css": "npx tailwindcss --watch -o src/public/style.css &",
+    "predev": "npm run watch-css & npm run dev:down",
+    "dev:down": "docker compose -f docker-compose.yml -f docker-compose.dev.yml down",
+    "dev": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up",
+    "start:dev": "nodemon src/server.js",
+    "preprod": "npm run build-css && npm run prod:down",
+    "prod:down": "docker compose down",
+    "prod": "docker compose --build up",
+    "start:prod": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PascalCTF/PascalCTF-2024.git"
+  },
+  "author": "ale18V",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PascalCTF/PascalCTF-2024/issues"
+  },
+  "homepage": "https://github.com/PascalCTF/PascalCTF-2024#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "tailwindcss": "^3.4.11"
+  }
+}

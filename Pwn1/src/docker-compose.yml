@@ -1,0 +1,10 @@
+name: pwn1
+
+services:
+  challenge:
+    build: .
+    ports:
+      - "1337:1337/tcp"
+    restart: unless-stopped
+    image: pwn1
+    container_name: Pwn1

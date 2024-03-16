@@ -1,0 +1,7 @@
+{
+    "name": "Morris Worm",
+    "category": "pwn",
+    "points": -1,
+    "description": "After a long career at Google, Elia decided to disappear, leaving behind a couple of programs. Can you find Elia's secret?",
+    "flag": "pascalCTF{y0u_F0uNd-Th3_n3w_mi113n1um-bug???}"
+}

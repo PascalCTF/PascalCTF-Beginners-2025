@@ -1,0 +1,10 @@
+name: web1
+
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:8000:80"
+    restart: unless-stopped
+    image: web1
+    container_name: Web1

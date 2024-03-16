@@ -1,0 +1,12 @@
+name: web2
+
+services:
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:8001:8001"
+    environment:
+      - FLAG=pascalCTF{d0n7_f0rg3t_th3_ch0col4t3}
+    restart: unless-stopped
+    image: web2
+    container_name: Web2
