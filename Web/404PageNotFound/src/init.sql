@@ -1,0 +1,11 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    user VARCHAR(100) NOT NULL,
+    pass VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE history (
+    id SERIAL PRIMARY KEY,
+    content VARCHAR(100) NOT NULL,
+    result INT NOT NULL
+);
