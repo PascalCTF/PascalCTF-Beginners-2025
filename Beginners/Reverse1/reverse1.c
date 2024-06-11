@@ -1,8 +1,8 @@
 /**
- * @file main.c
+ * @file reverse1.c
  * @author Alan Davide Bovo (alandavide.bovo.stud@ispascalcomandini.it)
  * @date 2024-01-03
- * Compile with: gcc main.c -o main
+ * Compile with: gcc reverse1.c -o reverse1
  */
 #include<stdio.h>
 #include<string.h>

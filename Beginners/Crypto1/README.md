@@ -21,5 +21,5 @@ print(flag.decode())
 
 ## Author
 **Author**: [`@AlBovo`](https://github.com/AlBovo/) <br>
-**Date**: 11-06-2024 <br>
+**Date**: 2024-06-11 <br>
 **Category**: Cryptography
