@@ -9,7 +9,7 @@ void lose() {
 
 int main()
 {
-    cout<<"Welcome to switcharoo! Can you guess my flag?";
+    cout<<"Welcome to switcharoo! Can you guess my flag?\n";
     string f;
     cin>>f;
 
