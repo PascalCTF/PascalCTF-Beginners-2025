@@ -16,8 +16,8 @@ def sussyFunction(val1: bytes, val2: bytes): # idk why i added it lol
     
     c, t = 0, 0
     while a > 0 and b > 0:
-        v1 = (a & 0xf) ^ (b & (0xff - 0xf))
-        v2 = (b & 0xf) ^ (a & (0xff - 0xf))
+        v1 = (a & 0xf) ^ ((b & (0xff - 0xf)) >> 4)
+        v2 = (b & 0xf) ^ ((a & (0xff - 0xf)) >> 4)
         c += (v2 | (v1 << 4)) << t
         a, b = a >> 8, b >> 8
         t += 8
