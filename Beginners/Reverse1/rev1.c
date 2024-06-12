@@ -8,16 +8,16 @@
 #include<string.h>
 #include<stdbool.h>
 
-// firma decifrata: ReV3r53_1s_4w3s0m3
-const char key[19] = "*7^tVr4FZ#7S4RFNd2\0"; // chiave di cifratura
-const char encrypted[19] = "xR\x08G$G\x07\x19kPhgCa5~\t\x01\0"; // stringa cifrata
+// deciphered flag: ReV3r53_1s_4w3s0m3
+const char key[19] = "*7^tVr4FZ#7S4RFNd2\0"; // encryption key
+const char encrypted[19] = "xR\x08G$G\x07\x19kPhgCa5~\t\x01\0"; // encrypted string
 
 bool checkSignature(char *signature){
-    if(strlen(signature) != strlen(key)){ // se la lunghezza della stringa inserita non è uguale a quella della chiave
+    if(strlen(signature) != strlen(key)){
         return false;
     }
     for(int i = 0; i < strlen(encrypted); i++){
-        if((int)(signature[i] ^ key[i]) != encrypted[i]){ // se il carattere della stringa inserita XOR il carattere della chiave non è uguale al carattere della stringa cifrata
+        if((int)(signature[i] ^ key[i]) != encrypted[i]){
             return false;
         }
     }
@@ -25,15 +25,15 @@ bool checkSignature(char *signature){
 }
 
 int main(){
-    char buffer[50];                            // buffer per la stringa inserita dall'utente
-    fputs("Insert the secret code: ", stdout);  // stampa a video la richiesta di inserimento della stringa
-    fgets(buffer, 50, stdin);                   // prende in input la stringa inserita dall'utente
+    char buffer[50];
+    fputs("Insert the secret code: ", stdout);
+    fgets(buffer, 50, stdin);
 
-    if(buffer[strlen(buffer) - 1] == '\n')      // se l'ultimo carattere della stringa inserita è un carattere di newline
-        buffer[strlen(buffer) - 1] = '\0';      // lo sostituisce con il carattere di terminazione della stringa
+    if(buffer[strlen(buffer) - 1] == '\n')
+        buffer[strlen(buffer) - 1] = '\0';
 
-    if(checkSignature(buffer))                  // se la stringa inserita è corretta
-        printf("Congrats! You have found the secret code, pascalCTF{%s}", buffer); // stampa a video il messaggio di congratulazioni
+    if(checkSignature(buffer))
+        printf("Congrats! You have found the secret code, pascalCTF{%s}", buffer);
     else
         fputs("Sorry, the secret code is wrong!", stdout);
     return 0;

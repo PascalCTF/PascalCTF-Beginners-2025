@@ -7,7 +7,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void init() {
+    setvbuf(stdout, NULL, _IONBF, 0);
+    setvbuf(stdin, NULL, _IONBF, 0);
+}
+
 int main() {
+    init();
     FILE *flag = fopen("flag.txt", "r");
 
     if (flag == NULL) {
@@ -23,8 +29,8 @@ int main() {
     fclose(flag);
     data[38] = '\0';
 
-    puts("Wow, it actually compiled!");
-    fgets(input, 20, stdin);
+    puts("Wow, it actually compiled! Do you want to write something?");
+    fgets(input, 30, stdin);
     printf(input);
     return 0;
 }
