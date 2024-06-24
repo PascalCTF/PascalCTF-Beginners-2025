@@ -16,19 +16,17 @@ app.post("/login", (req, res) => {
     if (username === "admin") res.send("Nope");
 
     res.cookie("user", username, { httpOnly: true })
-        .redirect(req.path);
+        .redirect("/");
 });
 
 app.get("/me", (req, res) => {
     const username = req.cookies.user;
-    if (!username) res.sendStatus(400);
-    else if (username === "admin") {
-        res.send(env.FLAG);
-    } else res.send("Try logging in as admin if you want the flag");
+    if (!username || username !== "admin") {
+        res.send("<a href='/login'>Log in</a> as admin if you want the flag.");
+    } else res.send(env.FLAG);
 })
 
 
-app.use(express.static(path.join(__dirname, "views")));
-
+app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(env.PORT, () => console.log("Server started"));
