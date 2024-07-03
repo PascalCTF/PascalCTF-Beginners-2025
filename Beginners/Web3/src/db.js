@@ -1,6 +1,5 @@
 const { env } = require('process');
 const { Client } = require('pg');
-const { env } = require('process');
 
 const client = new Client(`psql://${env.DB_USER}:${env.DB_PASSWORD}@${env.DB_HOSTNAME}/`);
 
@@ -63,6 +62,6 @@ client.query(`CREATE TABLE IF NOT EXISTS FLAG (
     flag VARCHAR(64) PRIMARY KEY 
 )`)
 
-client.query(`INSERT INTO FLAG VALUES ($1)`, [process.env.FLAG]);
+client.query(`INSERT INTO FLAG VALUES ($1)`, [env.FLAG], (err) => console.log(err));
 
 module.exports = client;
