@@ -1,0 +1,5 @@
+services:
+  app:
+    volumes:
+      - "./:/srv/app/:ro"
+    command: npx nodemon src/server.js
