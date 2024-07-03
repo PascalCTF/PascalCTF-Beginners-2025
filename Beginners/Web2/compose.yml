@@ -1,0 +1,6 @@
+services:
+  app:
+    build: .
+    ports:
+      - "${PORT}:${PORT}"
+    command: ["node", "server.js"]

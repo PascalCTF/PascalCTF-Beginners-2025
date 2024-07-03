@@ -3,7 +3,7 @@ const path = require('path');
 const cookie_parser = require('cookie-parser');
 const { env } = require('process');
 
-require('dotenv').config({ path: "config.env" });
+require('dotenv').config();
 
 const app = express();
 
@@ -14,9 +14,11 @@ app.post("/login", (req, res) => {
     const username = req.body.username
     if (!username) res.sendStatus(400);
     if (username === "admin") res.send("Nope");
+    else {
+        res.cookie("user", username, { httpOnly: true })
+            .redirect("/");
+    }
 
-    res.cookie("user", username, { httpOnly: true })
-        .redirect("/");
 });
 
 app.get("/me", (req, res) => {
