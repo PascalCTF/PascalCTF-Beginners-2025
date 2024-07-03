@@ -626,6 +626,10 @@ video {
   height: 1.25rem;
 }
 
+.min-h-svh {
+  min-height: 100svh;
+}
+
 .w-5 {
   width: 1.25rem;
 }
@@ -638,10 +642,18 @@ video {
   max-width: 64rem;
 }
 
+.flex-grow {
+  flex-grow: 1;
+}
+
 .appearance-none {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .items-center {
@@ -650,6 +662,14 @@ video {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .rounded-lg {
@@ -668,9 +688,13 @@ video {
   border-bottom-width: 1px;
 }
 
-.border-gray-200 {
+.border-r {
+  border-right-width: 1px;
+}
+
+.border-gray-400 {
   --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
 .border-slate-400 {
@@ -678,14 +702,9 @@ video {
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
-.bg-gray-100 {
+.bg-gray-300 {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
 .bg-slate-500 {
@@ -707,18 +726,9 @@ video {
   padding: 1rem;
 }
 
-.p-6 {
-  padding: 1.5rem;
-}
-
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
 }
 
 .py-2 {
@@ -731,6 +741,10 @@ video {
   padding-bottom: 1.5rem;
 }
 
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
 .pl-2 {
   padding-left: 0.5rem;
 }
@@ -741,6 +755,10 @@ video {
 
 .pr-8 {
   padding-right: 2rem;
+}
+
+.pt-3 {
+  padding-top: 0.75rem;
 }
 
 .text-center {
@@ -756,12 +774,17 @@ video {
   line-height: 1.75rem;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
 
-.font-medium {
-  font-weight: 500;
+.font-semibold {
+  font-weight: 600;
 }
 
 .uppercase {
@@ -792,6 +815,11 @@ video {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-slate-300 {
+  --tw-shadow-color: #cbd5e1;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .hover\:cursor-pointer:hover {

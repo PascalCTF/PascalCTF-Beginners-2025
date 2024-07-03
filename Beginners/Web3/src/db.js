@@ -62,6 +62,6 @@ client.query(`CREATE TABLE IF NOT EXISTS FLAG (
     flag VARCHAR(64) PRIMARY KEY 
 )`)
 
-client.query(`INSERT INTO FLAG VALUES ($1)`, [env.FLAG]);
+client.query(`INSERT INTO FLAG VALUES ($1)`, [env.FLAG], (err) => console.log(err));
 
 module.exports = client;
