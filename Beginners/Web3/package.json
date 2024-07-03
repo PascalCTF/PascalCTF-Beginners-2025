@@ -1,0 +1,27 @@
+{
+  "name": "web3",
+  "version": "1.0.0",
+  "description": "Third beginner web challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/AlBovo/PascalCTF.git"
+  },
+  "author": "ale18V",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlBovo/PascalCTF/issues"
+  },
+  "homepage": "https://github.com/AlBovo/PascalCTF#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "tailwindcss": "^3.4.4"
+  }
+}

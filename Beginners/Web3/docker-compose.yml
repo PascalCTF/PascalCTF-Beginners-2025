@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres
+    environment:
+      - "POSTGRES_USER=${DB_USER}"
+      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+    healthcheck:
+      test: pg_isready -U $$POSTGRES_USER
+      interval: 10s
+      timeout: 10s
+      retries: 5
+  app:
+    build: .
+    links:
+      - "db:${DB_HOSTNAME}"
+    command: "node src/server.js"
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
