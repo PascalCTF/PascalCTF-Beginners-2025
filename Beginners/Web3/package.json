@@ -4,9 +4,6 @@
   "description": "Third beginner web challenge",
   "main": "server.js",
   "scripts": {
-<<<<<<< HEAD
-    "test": "echo \"Error: no test specified\" && exit 1"
-=======
     "build-css": "npx tailwindcss -o src/public/style.css",
     "watch-css": "npx tailwindcss --watch -o src/public/style.css &",
     "predev": "npm run watch-css & npm run dev:down",
@@ -17,7 +14,6 @@
     "prod:down": "docker compose down",
     "prod": "docker compose --build up",
     "start:prod": "node src/server.js"
->>>>>>> ale/dev
   },
   "repository": {
     "type": "git",
@@ -30,10 +26,7 @@
   },
   "homepage": "https://github.com/AlBovo/PascalCTF#readme",
   "dependencies": {
-<<<<<<< HEAD
-=======
     "ejs": "^3.1.10",
->>>>>>> ale/dev
     "express": "^4.19.2",
     "pg": "^8.12.0"
   },
