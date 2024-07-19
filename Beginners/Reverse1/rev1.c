@@ -26,11 +26,15 @@ bool checkSignature(char *signature){
 
 int main(){
     char buffer[50];
-    fputs("Insert the secret code: ", stdout);
+    int buflen = 0;
+	fputs("Insert the secret code: ", stdout);
     fgets(buffer, 50, stdin);
-
-    if(buffer[strlen(buffer) - 1] == '\n')
-        buffer[strlen(buffer) - 1] = '\0';
+	
+	buflen = strlen(buffer);
+    if(buflen > 0 && buffer[buflen - 1] == '\n') {
+    	buflen--;
+		buffer[buflen] = '\0';
+	}
 
     if(checkSignature(buffer))
         printf("Congrats! You have found the secret code, pascalCTF{%s}", buffer);
