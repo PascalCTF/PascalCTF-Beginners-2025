@@ -8,10 +8,13 @@ There are five types of challenge:
 * [`Web Security`](#web-security-) 🌐
 
 ## Miscellaneous 🪄
+* #### [`Base N' Hex`](https://github.com/AlBovo/PascalCTF/tree/main/Beginners/Misc1)
+    I encrypted the flag but I don't remember in what order. Can you help me?<br>
+    **Author** : [`@AlBovo`](https://github.com/AlBovo)
 
 ## Cryptography 🔑
-* #### [`Base N' Hex`](https://github.com/AlBovo/PascalCTF/tree/main/Beginners/Crypto1)
-    I encrypted the flag but I don't remember in what order. Can you help me?<br>
+* #### [`Romañs Empyre`](https://github.com/AlBovo/PascalCTF/tree/main/Beginners/Crypto1)
+    My friend Elia forgot how to write, can you help him recover his flag??<br>
     **Author** : [`@AlBovo`](https://github.com/AlBovo)
 
 * #### [`My favourite number`](https://github.com/AlBovo/PascalCTF/tree/main/Beginners/Crypto3)
@@ -23,7 +26,7 @@ There are five types of challenge:
     After a long career at Google, Elia decided to disappear, leaving behind a couple of programs. Could you find Elia's secret?<br>
     **Author** : [`@AlBovo`](https://github.com/AlBovo)
 
-* #### [`E.L.I.A`](https://github.com/AlBovo/PascalCTF/tree/main/Beginners/Pwn3)
+* #### [`E.L.I.A`](https://github.com/AlBovo/PascalCTF/tree/main/Beginners/Pwn2)
     Elia's new software E.L.I.A (~~Un~~Exploitable Latent Insecure Addresses) is out! Check it out now!!!<br>
     **Author** : [`@AlBovo`](https://github.com/AlBovo)
 

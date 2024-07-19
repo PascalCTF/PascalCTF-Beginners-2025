@@ -5,7 +5,7 @@ from pwn import *
 if args.REMOTE:
     r = remote('localhost', 1337) # change host and port
 else:
-    r = process('./pwn3')
+    r = process('./pwn2')
 
 r.recvuntil(b'?\n')
 PAYLOAD = b''

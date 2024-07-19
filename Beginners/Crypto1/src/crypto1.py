@@ -1,17 +1,20 @@
-from base64 import b64encode
-import random
+import dotenv, os, random, string
 
-FLAG = open("flag.txt", "rb").read()
-assert FLAG.startswith(b"pascalCTF{")
-assert FLAG.endswith(b"}")
+dotenv.load_dotenv()
+alphabet = string.ascii_letters + string.digits + "{}_-.,/%?$!@#"
+FLAG : str = os.getenv("FLAG")
+assert FLAG.startswith("pascalCTF{")
+assert FLAG.endswith("}")
 
-def encode(input_string):
-    if random.randint(0, 1) == 0:
-        return b64encode(input_string)
-    else:
-        return input_string.hex().encode()
-    
+def romanize(input_string):
+    key = random.randint(1, len(alphabet) - 1)
+    result = [""] * len(input_string)
+    for i, c in enumerate(input_string):
+        result[i] = alphabet[(alphabet.index(c) + key) % len(alphabet)]
+    return "".join(result)
+
 if __name__ == "__main__":
-    for i in range(10):
-        FLAG = encode(FLAG)
-    print(FLAG.decode())
+    result = romanize(FLAG)
+    assert result != FLAG
+    with open("output.txt", "w") as f:
+        f.write(result)

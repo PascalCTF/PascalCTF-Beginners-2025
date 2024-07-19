@@ -2,7 +2,7 @@
  * @file pwn1.c
  * @author Alan Davide Bovo (alandavide.bovo.stud@ispascalcomandini.it)
  * @date 2024-07-19
- * Compile with: gcc pwn1.c -o pwn1
+ * Compile with: gcc -fno-stack-protector pwn1.c -o pwn1
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,12 +26,12 @@ void win(){
         return;
     }
     fclose(flag);
-    printf("Here's your prize: %s", &data);
+    printf("Here's your prize: %s\n", &data);
 }
 
 int main(){
+    char data[44];
     int number = 69;
-    char data[40];
     
     puts("Do you want to say something?");
     fgets(data, 1337, stdin);

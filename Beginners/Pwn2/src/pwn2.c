@@ -1,8 +1,8 @@
 /**
- * @file pwn3.c
+ * @file pwn2.c
  * @author Alan Davide Bovo (alandavide.bovo.stud@ispascalcomandini.it)
  * @date 2024-06-11
- * Compile with: gcc pwn3.c -o pwn3
+ * Compile with: gcc pwn2.c -o pwn2
  */
 #include <stdio.h>
 #include <stdlib.h>
