@@ -12,6 +12,10 @@ There are five types of challenge:
     I encrypted the flag but I don't remember in what order. Can you help me?<br>
     **Author** : [`@AlBovo`](https://github.com/AlBovo)
 
+* ### [`Romagnol Prometheus`](https://github.com/AlBovo/PascalCTF/tree/main/Beginners/Misc2)
+    Mattia said he was feeling a little mischevious today and sent me these photos, can you help me understand what he's up to?
+    **Author** : [`@Mark-74`](https://github.com/Mark-74)
+
 ## Cryptography 🔑
 * #### [`Romañs Empyre`](https://github.com/AlBovo/PascalCTF/tree/main/Beginners/Crypto1)
     My friend Elia forgot how to write, can you help him recover his flag??<br>

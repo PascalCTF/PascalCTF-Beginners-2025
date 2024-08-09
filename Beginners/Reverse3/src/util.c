@@ -5,28 +5,24 @@
 
 #include "util.h"
 
-void setupbuf(void)
-{
+void setupbuf(void){
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stdin, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
 }
 
-void clear_screen(void)
-{
+void clear_screen(void){
     printf("\033[H\033[J");
 }
 
-struct Pair
-{
+struct Pair{
     int x;
     int y;
 };
 
 struct Pair player_position = {5, 2};
 
-struct Collectable
-{
+struct Collectable{
     struct Pair position;
     char name[5];
 };
@@ -44,8 +40,7 @@ struct Collectable collectables[10] = {
     {{56, 14}, "A    "},
 };
 
-char menu(void)
-{
+char menu(void){
     char choice;
     printf("1. Play\n");
     printf("2. Contact support\n");
@@ -96,47 +91,36 @@ char strings[][200] = {
     "║                                                        ║\n",
     "╚════════════════════════════════════════════════════════╝\n\n"};
 
-void setup_collectables()
-{
-    for (int i = 0; i < 10; i++)
-    {
+void setup_collectables(){
+    for (int i = 0; i < 10; i++){
         strings[collectables[i].position.y][collectables[i].position.x] = 'x';
     }
 }
 
-void print_map()
-{
+void print_map(){
     struct Pair player_position = get_position();
 
-    for (int i = 0; i < 37; i++)
-    {
+    for (int i = 0; i < 37; i++){
         printf("%s", strings[i]);
     }
     printf("Progress: %s\n", progress);
     return;
 }
 
-struct Pair get_position()
-{
+struct Pair get_position(){
     struct Pair position = {
         player_position.x,
         player_position.y};
     return position;
 }
 
-void get_collectable(struct Pair position)
-{
-    for (int i = 0; i < 10; i++)
-    {
-        if (collectables[i].position.x == position.x && collectables[i].position.y == position.y)
-        {
+void get_collectable(struct Pair position){
+    for (int i = 0; i < 10; i++){
+        if (collectables[i].position.x == position.x && collectables[i].position.y == position.y){
             strings[position.y][position.x] = ' ';
-            for (int j = 0; j < 46; j++)
-            {
-                if (progress[j] == '\0')
-                {
-                    for (int k = 0; k < 5; k++)
-                    {
+            for (int j = 0; j < 46; j++){
+                if (progress[j] == '\0'){
+                    for (int k = 0; k < 5; k++){
                         progress[j + k] = collectables[i].name[k];
                     }
                     return;
@@ -147,21 +131,17 @@ void get_collectable(struct Pair position)
     return;
 }
 
-bool check_movement(int x_movement, int y_movement)
-{
+bool check_movement(int x_movement, int y_movement){
     struct Pair current_position = get_position();
     return strings[current_position.y + y_movement][current_position.x + x_movement] != '#';
 }
 
-void update_position(int x_movement, int y_movement)
-{
-    if (check_movement(x_movement, y_movement))
-    {
+void update_position(int x_movement, int y_movement){
+    if (check_movement(x_movement, y_movement)){
         strings[player_position.y][player_position.x] = ' ';
         player_position.x += x_movement;
         player_position.y += y_movement;
-        if (strings[player_position.y][player_position.x] == 'x')
-        {
+        if (strings[player_position.y][player_position.x] == 'x'){
             get_collectable(player_position);
         }
         strings[player_position.y][player_position.x] = 'o';
@@ -169,23 +149,20 @@ void update_position(int x_movement, int y_movement)
     return;
 }
 
-void contact_support(void)
-{
+void contact_support(void){
     printf("%s", "***** Contact support *****\n\n\n");
     printf("%s", "Would you like to send your progress to support? (Y/n): ");
     char choice = getchar();
     getchar();
-    if (choice != 'n' || choice != 'N')
-    {
-        printf("%s", "\nSending progress to support...\n");
+    if (choice != 'n' && choice != 'N'){
+        puts("\nSending progress to support...");
         CURL *curl;
         CURLcode res;
         curl_global_init(CURL_GLOBAL_DEFAULT);
         curl = curl_easy_init();
 
-        if (curl)
-        {
-            curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.1:5000/adminSupport");
+        if (curl){
+            curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.1:5000/adminSupport"); // TODO: Change to actual support URL
             char *json_data = "{\"code\":\"%s\"}", progress;
 
             struct curl_slist *headers = NULL;

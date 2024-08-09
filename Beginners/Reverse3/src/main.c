@@ -1,4 +1,9 @@
-//gcc main.c util.c -lcurl
+/**
+ * @file main.c
+ * @author Marco Balducci, Alan Davide Bovo
+ * @date 2024-08-09
+ * Compile with: gcc main.c util.c -lcurl -o kontactmi
+ */
 #include "util.h"
 
 struct player{
