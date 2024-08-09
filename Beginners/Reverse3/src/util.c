@@ -28,16 +28,16 @@ struct Collectable{
 };
 
 struct Collectable collectables[10] = {
-    {{5, 6}, "up   "},
-    {{18, 2}, "up   "},
-    {{48, 6}, "down "},
-    {{27, 2}, "down "},
-    {{50, 2}, "left "},
+    {{5, 6}, "up"},
+    {{18, 2}, "up"},
+    {{48, 6}, "down"},
+    {{27, 2}, "down"},
+    {{50, 2}, "left"},
     {{24, 10}, "right"},
-    {{15, 14}, "left "},
+    {{15, 14}, "left"},
     {{9, 2}, "right"},
-    {{35, 14}, "B    "},
-    {{56, 14}, "A    "},
+    {{35, 14}, "B"},
+    {{56, 14}, "A"},
 };
 
 char menu(void){
@@ -47,10 +47,16 @@ char menu(void){
     printf("3. Exit\n");
     printf("Enter your choice: ");
     scanf("%c", &choice);
+    clearStdin();
     return choice;
 }
 
-char progress[50];
+void clearStdin(void){
+    int c;
+    while((c = getchar()) != '\n' && c != EOF);
+}
+
+char progress[50] = {'\0'};
 
 char strings[][200] = {
     "╔════════════════════════════════════════════════════════╗\n",
@@ -110,7 +116,8 @@ void print_map(){
 struct Pair get_position(){
     struct Pair position = {
         player_position.x,
-        player_position.y};
+        player_position.y
+    };
     return position;
 }
 
@@ -120,8 +127,13 @@ void get_collectable(struct Pair position){
             strings[position.y][position.x] = ' ';
             for (int j = 0; j < 46; j++){
                 if (progress[j] == '\0'){
-                    for (int k = 0; k < 5; k++){
-                        progress[j + k] = collectables[i].name[k];
+                    char *name = collectables[i].name;
+                    if(j > 0){
+                        progress[j] = '-';
+                        j++;
+                    }
+                    for (int k = 0; k < strlen(name); k++){
+                        progress[j + k] = name[k];
                     }
                     return;
                 }
@@ -150,10 +162,10 @@ void update_position(int x_movement, int y_movement){
 }
 
 void contact_support(void){
-    printf("%s", "***** Contact support *****\n\n\n");
-    printf("%s", "Would you like to send your progress to support? (Y/n): ");
+    puts("***** Contact support *****\n\n");
+    printf("Would you like to send your progress to support? (Y/n): ");
     char choice = getchar();
-    getchar();
+    clearStdin();
     if (choice != 'n' && choice != 'N'){
         puts("\nSending progress to support...");
         CURL *curl;
@@ -163,7 +175,8 @@ void contact_support(void){
 
         if (curl){
             curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.1:5000/adminSupport"); // TODO: Change to actual support URL
-            char *json_data = "{\"code\":\"%s\"}", progress;
+            char json_data[256];
+            snprintf(json_data, 256, "{\"code\":\"%s\"}", progress);
 
             struct curl_slist *headers = NULL;
             headers = curl_slist_append(headers, "Content-Type: application/json");

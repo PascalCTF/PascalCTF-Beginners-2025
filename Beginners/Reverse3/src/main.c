@@ -14,8 +14,8 @@ struct player{
 void play_game(){
     while(1){
         print_map();
-        char choice;
-        scanf("%c", &choice);
+        char choice = getchar();
+        getchar();
         if(choice == 'w')
             update_position(0, -1);
         else if(choice == 's')

@@ -3,13 +3,12 @@
 
 #include <stdio.h>
 
-void setupbuf(void);
-void clear_screen(void);
-char menu(void);
 void print_map();
-void update_position(int x, int y);
-struct Pair get_position();
+void update_position(int x_movement, int y_movement);
+void clear_screen(void);
+void setupbuf(void);
+void setup_collectables();
+char menu(void);
 void contact_support(void);
-void setup_collectables(void);
 
 #endif
