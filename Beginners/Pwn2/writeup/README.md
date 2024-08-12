@@ -33,4 +33,4 @@ print(pascal)
 ## Author
 **Author**: [`@AlBovo`](https://github.com/AlBovo/) <br>
 **Date**: 2024-07-19 <br>
-**Category**: Cryptography
+**Category**: Binary Exploitation
