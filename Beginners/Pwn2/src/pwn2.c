@@ -1,36 +1,70 @@
-/**
- * @file pwn2.c
- * @author Alan Davide Bovo (alandavide.bovo.stud@ispascalcomandini.it)
- * @date 2024-06-11
- * Compile with: gcc pwn2.c -o pwn2
- */
+// compile with gcc -fno-stack-protector -no-pie pwn2.c -o pwn2
+
 #include <stdio.h>
 #include <stdlib.h>
+#include<unistd.h>
 
-void init() {
-    setvbuf(stdout, NULL, _IONBF, 0);
-    setvbuf(stdin, NULL, _IONBF, 0);
+void win()
+{
+    char flag[41];
+    FILE *file = fopen("flag.txt", "r");
+    fgets(flag, 41, file);
+    puts(flag);
+    fclose(file);
 }
 
-int main() {
-    init();
-    FILE *flag = fopen("flag.txt", "r");
+void printMenu()
+{
 
-    if (flag == NULL) {
-        printf("Error: File not found\n");
-        return 1;
+    puts(" █    ██  ███▄    █  ██▓███   █     █░███▄    █  ▄▄▄       ▄▄▄▄    ██▓    ▓█████      ██████  ██░ ██  ▒█████   ██▓███  ");
+    puts(" ██  ▓██▒ ██ ▀█   █ ▓██░  ██▒▓█░ █ ░█░██ ▀█   █ ▒████▄    ▓█████▄ ▓██▒    ▓█   ▀    ▒██    ▒ ▓██░ ██▒▒██▒  ██▒▓██░  ██▒");
+    puts("▓██  ▒██░▓██  ▀█ ██▒▓██░ ██▓▒▒█░ █ ░█▓██  ▀█ ██▒▒██  ▀█▄  ▒██▒ ▄██▒██░    ▒███      ░ ▓██▄   ▒██▀▀██░▒██░  ██▒▓██░ ██▓▒");
+    puts("▓▓█  ░██░▓██▒  ▐▌██▒▒██▄█▓▒ ▒░█░ █ ░█▓██▒  ▐▌██▒░██▄▄▄▄██ ▒██░█▀  ▒██░    ▒▓█  ▄      ▒   ██▒░▓█ ░██ ▒██   ██░▒██▄█▓▒ ▒");
+    puts("▒▒█████▓ ▒██░   ▓██░▒██▒ ░  ░░░██▒██▓▒██░   ▓██░ ▓█   ▓██▒░▓█  ▀█▓░██████▒░▒████▒   ▒██████▒▒░▓█▒░██▓░ ████▓▒░▒██▒ ░  ░");
+    puts("░▒▓▒ ▒ ▒ ░ ▒░   ▒ ▒ ▒▓▒░ ░  ░░ ▓░▒ ▒ ░ ▒░   ▒ ▒  ▒▒   ▓▒█░░▒▓███▀▒░ ▒░▓  ░░░ ▒░ ░   ▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒░ ▒░▒░▒░ ▒▓▒░ ░  ░");
+    puts("░░▒░ ░ ░ ░ ░░   ░ ▒░░▒ ░       ▒ ░ ░ ░ ░░   ░ ▒░  ▒   ▒▒ ░▒░▒   ░ ░ ░ ▒  ░ ░ ░  ░   ░ ░▒  ░ ░ ▒ ░▒░ ░  ░ ▒ ▒░ ░▒ ░     ");
+    puts(" ░░░ ░ ░    ░   ░ ░ ░░         ░   ░    ░   ░ ░   ░   ▒    ░    ░   ░ ░      ░      ░  ░  ░   ░  ░░ ░░ ░ ░ ▒  ░░       ");
+    puts("   ░              ░              ░            ░       ░  ░ ░          ░  ░   ░  ░         ░   ░  ░  ░    ░ ░           ");
+    puts("                                                                ░                                                      ");
+
+    puts("\n\n\n");
+    puts("Market menu:");
+    puts("[0] Exit");
+    puts("[1] Buy amazing stuff");
+}
+
+int main()
+{
+    char username[76];
+    int limit = 81;
+    int choice;
+
+    puts("Welcome to Unpwnable shop!\n***Now with support for abnormally long usernames!!1!***");
+    puts("To continue insert your name (don't even think about overwriting some return addresses, you can't lmao) :");
+    fgets(username, limit, stdin);
+
+    printf("Welcome to the shop %s\n\n\n", username);
+    printMenu();
+
+    scanf("%d", &choice);
+    getchar();
+
+    if (choice)
+    {
+        puts("finding stuff to sell...");
+        sleep(2);
+        if (choice == 69)
+        {
+            puts("What was your name again? I forgot it.");
+            fgets(username, limit, stdin);
+            puts("Ok, just hold on while i finish searching.");
+            sleep(5);
+        }
+
+        puts("didn't find anything :(");
     }
 
-    char data[40], input[40];
-    if (fgets(data, 38, flag) == NULL){
-        printf("Error: Flag file is empty\n");
-        return 1;
-    }
-    fclose(flag);
-    data[38] = '\0';
+    puts("Bye!");
 
-    puts("Wow, it actually compiled! Do you want to write something?");
-    fgets(input, 30, stdin);
-    printf(input);
     return 0;
 }
