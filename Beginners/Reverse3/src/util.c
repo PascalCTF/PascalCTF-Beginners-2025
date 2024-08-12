@@ -174,6 +174,10 @@ void contact_support(void){
         curl = curl_easy_init();
 
         if (curl){
+            // ADD GET requests to api 
+            // curl_easy_setopt(curl, CURLOPT_URL, URL);
+            // curl_easy_perform(curl);
+
             curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.1:5000/adminSupport"); // TODO: Change to actual support URL
             char json_data[256];
             snprintf(json_data, 256, "{\"code\":\"%s\"}", progress);
