@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from pwn import *
+from pwn import args, remote, process
 
 # Change this to remote if you want to run it on remote server
 if args.REMOTE:
