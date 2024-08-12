@@ -184,11 +184,13 @@ void contact_support(void){
             curl_easy_setopt(curl, CURLOPT_POSTFIELDS, json_data);
 
             sleep(2);
-            res = curl_easy_perform(curl); //TODO: check response == code and finish challenge
-
-            printf("%u\n", res);
-
-            // Cleanup
+            res = curl_easy_perform(curl);
+            
+            if (res != CURLE_OK)
+                puts("Failed to send progress to support, please contact admins for help");
+            
+            puts("\n");
+            
             curl_easy_cleanup(curl);
             curl_slist_free_all(headers);
             curl_global_cleanup();
