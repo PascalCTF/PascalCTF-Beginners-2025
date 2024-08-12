@@ -1,9 +1,7 @@
 # X-Ray
-
 ## Challenge
-This challenge first reads the flag from the file `flag.txt` and saves it on the **stack**. Then, it requests input from the user and subsequently prints it insecurely using `printf` without any **defined format**.
-
-This executable can therefore be exploited if the correct offsets on the stack of the flag (from 8 to 13) are found and used together with `%p` in the format `%x$p` where *x* is the offset.
+This challenge reads a "*license*" and then checks whenever its valid.
+The main issue here it's that the encryption of the license was made using **XOR**, so the it can be decrypted as follows.
 
 ## Solution
 ```py
