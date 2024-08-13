@@ -1,21 +1,18 @@
-// compile with gcc -fno-stack-protector -no-pie pwn2.c -o pwn2
-
+/**
+ * @file pwn2.c
+ * @author Marco Balducci
+ * @date 2024-08-12
+ * Compile with: gcc -fno-stack-protector -no-pie pwn2.c -o pwn2
+ */
 #include <stdio.h>
 #include <stdlib.h>
-#include<unistd.h>
+#include <unistd.h>
 
-void win()
-{
-    char flag[41];
-    FILE *file = fopen("flag.txt", "r");
-    fgets(flag, 41, file);
-    puts(flag);
-    fclose(file);
+void win(){
+    system("/bin/sh");
 }
 
-void printMenu()
-{
-
+void printMenu(){
     puts(" █    ██  ███▄    █  ██▓███   █     █░███▄    █  ▄▄▄       ▄▄▄▄    ██▓    ▓█████      ██████  ██░ ██  ▒█████   ██▓███  ");
     puts(" ██  ▓██▒ ██ ▀█   █ ▓██░  ██▒▓█░ █ ░█░██ ▀█   █ ▒████▄    ▓█████▄ ▓██▒    ▓█   ▀    ▒██    ▒ ▓██░ ██▒▒██▒  ██▒▓██░  ██▒");
     puts("▓██  ▒██░▓██  ▀█ ██▒▓██░ ██▓▒▒█░ █ ░█▓██  ▀█ ██▒▒██  ▀█▄  ▒██▒ ▄██▒██░    ▒███      ░ ▓██▄   ▒██▀▀██░▒██░  ██▒▓██░ ██▓▒");
@@ -33,8 +30,7 @@ void printMenu()
     puts("[1] Buy amazing stuff");
 }
 
-int main()
-{
+int main(){
     char username[76];
     int limit = 81;
     int choice;
@@ -49,12 +45,10 @@ int main()
     scanf("%d", &choice);
     getchar();
 
-    if (choice)
-    {
+    if (choice){
         puts("finding stuff to sell...");
         sleep(2);
-        if (choice == 69)
-        {
+        if (choice == 69){
             puts("What was your name again? I forgot it.");
             fgets(username, limit, stdin);
             puts("Ok, just hold on while i finish searching.");
@@ -65,6 +59,5 @@ int main()
     }
 
     puts("Bye!");
-
     return 0;
 }
