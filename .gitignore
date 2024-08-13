@@ -1,5 +1,6 @@
 *.out
 .vscode/
+attachments/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

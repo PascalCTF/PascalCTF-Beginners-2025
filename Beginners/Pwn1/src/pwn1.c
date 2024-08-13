@@ -7,9 +7,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void init() {
+void init(){
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stdin, NULL, _IONBF, 0);
+    setvbuf(stderr, NULL, _IONBF, 0);
 }
 
 void win(){
@@ -30,6 +31,7 @@ void win(){
 }
 
 int main(){
+    init();
     char data[44];
     int number = 69;
     

@@ -1,0 +1,7 @@
+services:
+  challenge:
+    build: .
+    ports:
+      - "1337:1337/tcp"
+    restart: unless-stopped
+    container_name: morris_worm

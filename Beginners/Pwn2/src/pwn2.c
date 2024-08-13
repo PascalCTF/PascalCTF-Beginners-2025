@@ -9,7 +9,13 @@
 #include <unistd.h>
 
 void win(){
-    system("/bin/sh");
+    execve("/bin/sh", NULL, NULL);
+}
+
+void init(){
+    setvbuf(stdout, NULL, _IONBF, 0);
+    setvbuf(stdin, NULL, _IONBF, 0);
+    setvbuf(stderr, NULL, _IONBF, 0);
 }
 
 void printMenu(){
@@ -31,6 +37,7 @@ void printMenu(){
 }
 
 int main(){
+    init();
     char username[76];
     int limit = 81;
     int choice;

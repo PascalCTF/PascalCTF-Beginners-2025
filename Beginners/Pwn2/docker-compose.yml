@@ -1,0 +1,7 @@
+services:
+  challenge:
+    build: .
+    ports:
+      - "1338:1338/tcp"
+    restart: unless-stopped
+    container_name: unpwnable_shop

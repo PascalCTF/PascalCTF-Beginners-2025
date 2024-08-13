@@ -2,14 +2,15 @@
  * @file pwn2.c
  * @author Alan Davide Bovo (alandavide.bovo.stud@ispascalcomandini.it)
  * @date 2024-06-11
- * Compile with: gcc pwn2.c -o pwn2
+ * Compile with: gcc pwn3.c -o pwn3
  */
 #include <stdio.h>
 #include <stdlib.h>
 
-void init() {
+void init(){
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stdin, NULL, _IONBF, 0);
+    setvbuf(stderr, NULL, _IONBF, 0);
 }
 
 int main() {

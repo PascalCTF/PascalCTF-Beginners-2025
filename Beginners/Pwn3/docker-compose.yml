@@ -1,0 +1,7 @@
+services:
+  challenge:
+    build: .
+    ports:
+      - "1339:1339/tcp"
+    restart: unless-stopped
+    container_name: elia

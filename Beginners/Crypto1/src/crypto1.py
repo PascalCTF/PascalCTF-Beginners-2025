@@ -2,7 +2,7 @@ import dotenv, os, random, string
 
 dotenv.load_dotenv()
 alphabet = string.ascii_letters + string.digits + "{}_-.,/%?$!@#"
-FLAG : str = os.getenv("FLAG")
+FLAG : str = os.getenv("FLAG", "pascalCTF{4l34_14ct4-3st/$$/3ncr1pt10n-1337}")
 assert FLAG.startswith("pascalCTF{")
 assert FLAG.endswith("}")
 
