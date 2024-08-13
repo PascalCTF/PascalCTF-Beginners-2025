@@ -1,0 +1,9 @@
+services:
+  challenge:
+    build: .
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    container_name: kontactmi
+    environment:
+      - FLAG=pascalCTF{M3t4l_G34r_15_k1Nd4_G04t3d}

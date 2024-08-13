@@ -106,5 +106,3 @@ int main() {
     cout << "Good job, now submit that flag!";
     return 0;
 }
-
-
