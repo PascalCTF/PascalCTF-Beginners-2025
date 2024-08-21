@@ -11,7 +11,6 @@ app.use(express.urlencoded());
 app.use(express.query());
 app.set('view engine', 'ejs');
 
-
 app.post("/api/group-stats", async (req, res) => {
     const group = req.body.group;
     let data = await db.query(`SELECT * FROM GROUP_STATS WHERE group_id = '${group}' ORDER BY ranking ASC`).catch((err) => console.error(err));
@@ -32,4 +31,3 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.listen(env.APP_PORT);
-

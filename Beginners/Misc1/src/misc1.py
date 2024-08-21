@@ -2,7 +2,7 @@ from base64 import b64encode
 import random, dotenv, os
 
 dotenv.load_dotenv()
-FLAG : str = os.get_env("FLAG", "pascalCTF{M4yb3_nex7_T1m3_ch3ck_cyb3rCH3F_$b64-d/e$}")
+FLAG : bytes = os.getenv("FLAG", "pascalCTF{nex7_T1m3_ch3ck_cyb3rCH3F_$b64-d/e$}").encode()
 assert FLAG.startswith(b"pascalCTF{")
 assert FLAG.endswith(b"}")
 
@@ -15,4 +15,5 @@ def encode(input_string):
 if __name__ == "__main__":
     for i in range(10):
         FLAG = encode(FLAG)
-    print(FLAG.decode())
+    with open('output.txt', 'w') as out:
+        out.write(FLAG.decode())
