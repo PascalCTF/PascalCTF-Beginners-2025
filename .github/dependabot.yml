@@ -6,14 +6,18 @@
 version: 2
 updates:
   - package-ecosystem: "pip" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directories: # Location of package manifests 
+      - "/Beginners/Crypto2/src/"
+      - "/Experts/Crypto2/src/"
     schedule:
       interval: "weekly"
     labels:
       - "pip dependencies"
       
   - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directories: # Location of package manifests 
+      - "/Beginners/Web2/src/"
+      - "/Beginners/Web3/src/"
     schedule:
       interval: "weekly"
     labels:
