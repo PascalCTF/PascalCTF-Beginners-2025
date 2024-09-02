@@ -8,7 +8,7 @@ client.connect((err) => {
     else console.log("Successfully connected to the database");
 });
 
-client.query(`DROP TABLE IF EXISTS GROUPS, GROUP_STATS`);
+client.query(`DROP TABLE IF EXISTS GROUPS, GROUP_STATS, FLAG`);
 
 client.query(`CREATE TABLE IF NOT EXISTS GROUPS (
     id CHAR NOT NULL PRIMARY KEY

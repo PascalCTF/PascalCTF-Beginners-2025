@@ -3,8 +3,8 @@ FROM ubuntu:22.04
 RUN apt-get update && apt-get install socat -y
 
 RUN adduser --disabled-password ctf 
-ADD ./src/flag.txt /home/ctf/flag.txt
-ADD ./src/worm /home/ctf/worm
+ADD flag.txt /home/ctf/flag.txt
+ADD worm /home/ctf/worm
 
 WORKDIR /home/ctf
 USER ctf

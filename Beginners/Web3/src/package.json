@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/AlBovo/PascalCTF.git"
+    "url": "git+ssh://git@github.com/PascalCTF/PascalCTF-2024.git"
   },
   "author": "ale18V",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AlBovo/PascalCTF/issues"
+    "url": "https://github.com/PascalCTF/PascalCTF-2024/issues"
   },
-  "homepage": "https://github.com/AlBovo/PascalCTF#readme",
+  "homepage": "https://github.com/PascalCTF/PascalCTF-2024#readme",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2",

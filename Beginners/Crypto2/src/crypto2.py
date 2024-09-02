@@ -14,7 +14,7 @@ def play(data: list[int], idx: int) -> list[int]:
         return result
     encoded = int.from_bytes(SENTENCES[idx], 'big')
     for mask in data:
-        # why you're usinge 1s when 0s exist
+        # why you're using 1s when 0s exist
         if mask.bit_count() > 40:
             continue
         result.append(encoded & mask)
