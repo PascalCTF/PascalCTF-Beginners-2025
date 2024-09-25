@@ -27,11 +27,11 @@
   "homepage": "https://github.com/PascalCTF/PascalCTF-2024#readme",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.19.2",
+    "express": "^4.21.0",
     "pg": "^8.12.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.4",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^3.4.11"
   }
 }
