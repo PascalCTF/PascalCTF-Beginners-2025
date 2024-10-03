@@ -6,7 +6,7 @@ SENTENCES = [
     os.getenv('FLAG', 'pascalCTF{m4by3_1_sh0uld_ch3ck_th3_t0t4l_numb3r_0f_ONES}').encode()
 ]
 
-def play(bets: list[int], idx: int) -> list[int]:
+def generate(bets: list[int], idx: int) -> list[int]:
     result = []
     if idx < 0 or idx > 2:
         return result
@@ -21,7 +21,7 @@ def play(bets: list[int], idx: int) -> list[int]:
 
 def menu():
     print("Welcome to the italian MindBlowing game!")
-    print("1. Play the game")
+    print("1. Generate numbers")
     print("2. Exit")
     print()
 
@@ -34,11 +34,11 @@ if __name__ == '__main__':
         try:
             if choice == '1':
                 idx = int(input('Gimme a number in the range [0; 2]: '))
-                bets_num = int(input('Gimme the number of your bets: '))
+                bets_num = int(input('Gimme a random number: '))
                 bets = []
                 for _ in range(bets_num):
-                    bets.append(int(input(f'Gimme the bet {_+1}: ')))
-                print(f"Result: {play(bets, idx)}")
+                    bets.append(int(input(f'Random number {_+1}: ')))
+                print(f"Result: {generate(bets, idx)}")
             elif choice == '2':
                 break
             else:

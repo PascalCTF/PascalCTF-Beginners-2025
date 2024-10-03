@@ -11,7 +11,9 @@ There are five types of challenge:
 |---:|---------------------|---------------------|-------------------------------------------------------------------------------------|----------:|----------------------------------------------------------|
 |  1 | Miscellaneous       | Base N' Hex         | [writeup](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Misc1/writeup)    |       NaN | [`@AlBovo`](https://github.com/AlBovo)                   |
 |  2 | Miscellaneous       | Romagnol Prometheus | [writeup](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Misc2/writeup)    |       NaN | [`@Mark-74`](https://github.com/Mark-74)                 |
+|  3 | Miscellaneous       | Dns e pancetta      | [writeup](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Misc3/writeup)    |       NaN | [`@AlBovo`](https://github.com/AlBovo)                 |
 |  4 | Cryptography        | Romañs Empyre       | [writeup](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Crypto1/writeup)  |       NaN | [`@AlBovo`](https://github.com/AlBovo)                   |
+|  5 | Cryptography        | MindBlowing         | [writeup](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Crypto2/writeup)  |       NaN | [`@AlBovo`](https://github.com/AlBovo)                   |
 |  6 | Cryptography        | My favourite number | [writeup](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Crypto3/writeup)  |       NaN | [`@dGianessiHawica`](https://github.com/dGianessiHawica) |
 |  7 | Binary Exploitation | Morris Worm         | [writeup](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Pwn1/writeup)     |       NaN | [`@AlBovo`](https://github.com/AlBovo)                   |
 |  8 | Binary Exploitation | Unpwnable shop      | [writeup](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Pwn2/writeup)     |       NaN | [`@Mark-74`](https://github.com/Mark-74)                   |
@@ -32,9 +34,19 @@ There are five types of challenge:
     Mattia said he was feeling a little mischevious today and sent me these photos, can you help me understand what he's up to?<br>
     **Author** : [`@Mark-74`](https://github.com/Mark-74)
 
+* ### [`DNS e pancetta`](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Misc3)
+    I've recently started studying a new cooking book and I think I've found the **best recipe** ever.<br>
+    Do you wanna read it? Ask my dear friend [*`DNS`*](https://en.wikipedia.org/wiki/Domain_Name_System)!<br>
+    **Author** : [`@AlBovo`](https://github.com/AlBovo)
+
 ## Cryptography 🔑
 * #### [`Romañs Empyre`](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Crypto1)
     My friend Elia forgot how to write, can you help him recover his flag??<br>
+    **Author** : [`@AlBovo`](https://github.com/AlBovo)
+
+* ### [`MindBlowing`](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Crypto2)
+    My friend Marco recently dived into studying bitwise operators, and now he's convinced he's invented pseudorandom numbers!<br>
+    Could you help me figure out his secrets?<br>
     **Author** : [`@AlBovo`](https://github.com/AlBovo)
 
 * #### [`My favourite number`](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Crypto3)
@@ -60,7 +72,7 @@ There are five types of challenge:
     **Author** : [`@AlBovo`](https://github.com/AlBovo)
 
 * #### [`Switcharoo`](https://github.com/PascalCTF/PascalCTF-2024/tree/main/Beginners/Reverse2)
-    I heard switch statements are very useful to make your code more readable.
+    I heard switch statements are very useful to make your code more readable.<br>
     I hope you can read better now that i m using switch statements!<br>
     **Author** : [`@Giak777`](https://github.com/Giak777)
 
